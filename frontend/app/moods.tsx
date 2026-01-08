@@ -67,51 +67,86 @@ export default function MoodsScreen() {
   if (loading) {
     return (
       <SafeAreaView style={styles.container}>
-        <View style={styles.loadingContainer}>
-          <ActivityIndicator size="large" color="#8B7355" />
-          <Text style={styles.loadingText}>Loading moods...</Text>
-        </View>
+        <ImageBackground
+          source={{ uri: 'https://images.unsplash.com/photo-1608509643848-5e00349cf077?w=800' }}
+          style={styles.loadingBackground}
+          blurRadius={3}
+        >
+          <LinearGradient
+            colors={['rgba(250, 247, 242, 0.9)', 'rgba(244, 228, 193, 0.95)']}
+            style={styles.loadingGradient}
+          >
+            <ActivityIndicator size="large" color="#8B7355" />
+            <Text style={styles.loadingText}>Loading moods...</Text>
+          </LinearGradient>
+        </ImageBackground>
       </SafeAreaView>
     );
   }
 
   return (
-    <SafeAreaView style={styles.container}>
-      <ScrollView
-        contentContainerStyle={styles.scrollContent}
-        showsVerticalScrollIndicator={false}
+    <View style={styles.container}>
+      <ImageBackground
+        source={{ uri: 'https://images.unsplash.com/photo-1591757311543-5fa5af831901?w=1200' }}
+        style={styles.backgroundImage}
+        resizeMode="cover"
       >
-        {/* Header */}
-        <View style={styles.header}>
-          <TouchableOpacity
-            onPress={() => router.back()}
-            style={styles.backButton}
-          >
-            <Text style={styles.backButtonText}>← Back</Text>
-          </TouchableOpacity>
-          <Text style={styles.title}>How do you feel?</Text>
-          <Text style={styles.subtitle}>आप कैसा महसूस करते हैं?</Text>
-        </View>
-
-        {/* Moods List */}
-        <View style={styles.moodsContainer}>
-          {moods.map((mood) => (
-            <TouchableOpacity
-              key={mood._id}
-              style={styles.moodCard}
-              onPress={() => handleMoodPress(mood._id)}
-              activeOpacity={0.7}
+        <LinearGradient
+          colors={['rgba(250, 247, 242, 0.85)', 'rgba(250, 247, 242, 0.95)', 'rgba(250, 247, 242, 1)']}
+          locations={[0, 0.3, 0.7]}
+          style={styles.gradient}
+        >
+          <SafeAreaView style={styles.safeArea}>
+            <ScrollView
+              contentContainerStyle={styles.scrollContent}
+              showsVerticalScrollIndicator={false}
             >
-              <View style={styles.moodContent}>
-                <Text style={styles.moodName}>{mood.name}</Text>
-                <Text style={styles.moodDescription}>{mood.description}</Text>
+              {/* Header */}
+              <View style={styles.header}>
+                <TouchableOpacity
+                  onPress={() => router.back()}
+                  style={styles.backButton}
+                >
+                  <Text style={styles.backButtonText}>← Back</Text>
+                </TouchableOpacity>
+                <View style={styles.titleContainer}>
+                  <Text style={styles.title}>How do you feel?</Text>
+                  <Text style={styles.subtitle}>आप कैसा महसूस करते हैं?</Text>
+                </View>
               </View>
-              <Text style={styles.arrow}>→</Text>
-            </TouchableOpacity>
-          ))}
-        </View>
-      </ScrollView>
-    </SafeAreaView>
+
+              {/* Moods List */}
+              <View style={styles.moodsContainer}>
+                {moods.map((mood, index) => (
+                  <TouchableOpacity
+                    key={mood._id}
+                    style={styles.moodCard}
+                    onPress={() => handleMoodPress(mood._id)}
+                    activeOpacity={0.8}
+                  >
+                    <LinearGradient
+                      colors={['#FFFFFF', '#FEFCF8']}
+                      style={styles.moodCardGradient}
+                    >
+                      <View style={styles.moodNumber}>
+                        <Text style={styles.moodNumberText}>{index + 1}</Text>
+                      </View>
+                      <View style={styles.moodContent}>
+                        <Text style={styles.moodName}>{mood.name}</Text>
+                        <Text style={styles.moodDescription}>{mood.description}</Text>
+                      </View>
+                      <View style={styles.arrowContainer}>
+                        <Text style={styles.arrow}>→</Text>
+                      </View>
+                    </LinearGradient>
+                  </TouchableOpacity>
+                ))}
+              </View>
+            </ScrollView>
+          </SafeAreaView>
+        </LinearGradient>
+      </ImageBackground>
+    </View>
   );
 }
 

@@ -68,6 +68,9 @@ class Chapter(BaseModel):
     description: str
     key_teaching: str
     verses: List[dict]  # List of sample verses
+    
+    class Config:
+        populate_by_name = True
 
 # Initialize sample data
 @app.on_event("startup")

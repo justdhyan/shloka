@@ -105,6 +105,30 @@
 user_problem_statement: "Build SHLOKA - A mobile app for Bhagavad Gita guidance organized by emotions and moods, targeting older adults (50-75+) with simple, calm UX"
 
 backend:
+  - task: "Chapters API - Get all chapters"
+    implemented: true
+    working: "NA"
+    file: "/app/backend/server.py"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: true
+    status_history:
+      - working: "NA"
+        agent: "main"
+        comment: "Implemented GET /api/chapters endpoint that returns all 18 chapters of Bhagavad Gita. Each chapter includes: _id, chapter_number, name_english, name_sanskrit, description, key_teaching, and verses array with sample verses. Data is seeded on startup. All 18 chapters added with authentic content."
+
+  - task: "Chapter Detail API - Get specific chapter"
+    implemented: true
+    working: "NA"
+    file: "/app/backend/server.py"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: true
+    status_history:
+      - working: "NA"
+        agent: "main"
+        comment: "Implemented GET /api/chapters/{chapter_number} endpoint that returns a specific chapter by its number (1-18). Returns full chapter details including verses. Tested manually with curl for chapters 1 and 18 - both working correctly."
+
   - task: "Emotions API - Get all emotions"
     implemented: true
     working: true

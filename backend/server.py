@@ -77,7 +77,9 @@ class Chapter(BaseModel):
 async def startup_db():
     # Check if data already exists
     existing_emotions = await db.emotions.count_documents({})
-    if existing_emotions > 0:
+    existing_chapters = await db.chapters.count_documents({})
+    
+    if existing_emotions > 0 and existing_chapters > 0:
         logger.info("Sample data already exists")
         return
     

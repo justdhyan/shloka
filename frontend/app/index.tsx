@@ -429,26 +429,40 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontStyle: 'italic',
   },
-  bookmarkButton: {
-    backgroundColor: '#6B9BD1',
-    paddingVertical: 18,
-    paddingHorizontal: 36,
-    borderRadius: 16,
+  buttonRow: {
     flexDirection: 'row',
+    gap: 12,
+    width: '100%',
+  },
+  actionButton: {
+    flex: 1,
+    paddingVertical: 18,
+    paddingHorizontal: 16,
+    borderRadius: 16,
+    flexDirection: 'column',
     alignItems: 'center',
+    justifyContent: 'center',
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 4 },
     shadowOpacity: 0.2,
     shadowRadius: 8,
     elevation: 5,
+    minHeight: 90,
   },
-  bookmarkIcon: {
-    fontSize: 24,
-    marginRight: 8,
+  chaptersButton: {
+    backgroundColor: '#8B7355',
   },
-  bookmarkButtonText: {
+  bookmarksButton: {
+    backgroundColor: '#6B9BD1',
+  },
+  buttonIcon: {
+    fontSize: 28,
+    marginBottom: 8,
+  },
+  buttonText: {
     color: '#FFFFFF',
-    fontSize: 18,
+    fontSize: 16,
     fontWeight: '700',
+    textAlign: 'center',
   },
 });
